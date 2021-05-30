@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordRPC.ConsoleApp", "DiscordRPC.ConsoleApp\DiscordRPC.ConsoleApp.csproj", "{A31EF2E4-6858-422F-9ADD-3242680193BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16966D84-3464-4C92-A8C2-E6521BE33F9A} = {16966D84-3464-4C92-A8C2-E6521BE33F9A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordRPC.Core", "DiscordRPC.Core\DiscordRPC.Core.csproj", "{16966D84-3464-4C92-A8C2-E6521BE33F9A}"
 EndProject
