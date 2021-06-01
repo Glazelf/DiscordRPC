@@ -8,7 +8,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordRPC.ConsoleApp", "Di
 		{16966D84-3464-4C92-A8C2-E6521BE33F9A} = {16966D84-3464-4C92-A8C2-E6521BE33F9A}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordRPC.Core", "DiscordRPC.Core\DiscordRPC.Core.csproj", "{16966D84-3464-4C92-A8C2-E6521BE33F9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordRPC.Core", "DiscordRPC.Core\DiscordRPC.Core.csproj", "{16966D84-3464-4C92-A8C2-E6521BE33F9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordRPC.WinForms", "DiscordRPC.WinForms\DiscordRPC.WinForms.csproj", "{A45D5D94-06AF-44F2-B992-4D1E7FBA64C2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16966D84-3464-4C92-A8C2-E6521BE33F9A} = {16966D84-3464-4C92-A8C2-E6521BE33F9A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +29,10 @@ Global
 		{16966D84-3464-4C92-A8C2-E6521BE33F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16966D84-3464-4C92-A8C2-E6521BE33F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16966D84-3464-4C92-A8C2-E6521BE33F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A45D5D94-06AF-44F2-B992-4D1E7FBA64C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A45D5D94-06AF-44F2-B992-4D1E7FBA64C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A45D5D94-06AF-44F2-B992-4D1E7FBA64C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A45D5D94-06AF-44F2-B992-4D1E7FBA64C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
