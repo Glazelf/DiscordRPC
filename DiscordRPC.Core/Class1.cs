@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DiscordRPC.Core
+﻿namespace DiscordRPC.Core
 {
     public class Class1
     {
