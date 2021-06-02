@@ -9,7 +9,6 @@ namespace DiscordRPC.WinForms
         public Main()
         {
             InitializeComponent();
-
         }
 
         bool ConnectedBool = false;
@@ -35,37 +34,45 @@ namespace DiscordRPC.WinForms
                 Therefore, always keep Discord running during tests, or use Discord.CreateFlags.NoRequireDiscord
                 */
                 var discord = new Discord.Discord(ClientID, (UInt64)Discord.CreateFlags.Default);
+                var activityManager = discord.GetActivityManager();
+
 
                 var activity = new Discord.Activity
                 {
-                    State = "gay test",
-                    Details = "wowzer",
+                    State = "RPC test",
+                    Details = "wowzer it works",
                     Timestamps =
                 {
                     Start = 5,
                 },
                 };
-                bool ActivityReturn = Core.Activity.UpdateActivity(discord, activity);
-                if (ActivityReturn == true)
+
+                // Doesn't seem to get executed?
+                activityManager.UpdateActivity(activity, (result) =>
                 {
-                    SyncButton.Enabled = true;
-                    ClientIDNumeric.Enabled = false;
-                    StatusConnectionText.ForeColor = Color.Green;
-                    StatusConnectionText.Text = "Connected";
-                    ConnectButton.Text = "Disconnect";
-                    ConnectedBool = true;
-                    LogText.Text += Environment.NewLine + "Successfully connected.";
-                }
-                else
-                {
-                    SyncButton.Enabled = false;
-                    ClientIDNumeric.Enabled = true;
-                    StatusConnectionText.ForeColor = Color.Red;
-                    StatusConnectionText.Text = "Disconnected";
-                    ConnectButton.Text = "Connect";
-                    ConnectedBool = false;
-                    LogText.Text += Environment.NewLine + "Failed to connect.";
-                }
+                    if (result == Discord.Result.Ok)
+                    {
+                        SyncButton.Enabled = true;
+                        ClientIDNumeric.Enabled = false;
+                        StatusConnectionText.ForeColor = Color.Green;
+                        StatusConnectionText.Text = "Connected";
+                        ConnectButton.Text = "Disconnect";
+                        ConnectedBool = true;
+                        LogText.Text += Environment.NewLine + "Successfully connected.";
+                        LogText.Text += Environment.NewLine + Convert.ToString(result);
+                    }
+                    else
+                    {
+                        SyncButton.Enabled = false;
+                        ClientIDNumeric.Enabled = true;
+                        StatusConnectionText.ForeColor = Color.Red;
+                        StatusConnectionText.Text = "Disconnected";
+                        ConnectButton.Text = "Connect";
+                        ConnectedBool = false;
+                        LogText.Text += Environment.NewLine + "Failed to connect.";
+                        LogText.Text += Environment.NewLine + Convert.ToString(result);
+                    }
+                });
             }
         }
 
