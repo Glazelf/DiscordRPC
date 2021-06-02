@@ -43,7 +43,10 @@ namespace DiscordRPC.WinForms
             bool ActivityReturn = Core.Activity.UpdateActivity(discord, activity);
             if(ActivityReturn == true)
             {
-
+                LogText.Text += Environment.NewLine + "Successfully connected.";
+            } else
+            {
+                LogText.Text += Environment.NewLine + "Failed to connect.";
             }
         }
 

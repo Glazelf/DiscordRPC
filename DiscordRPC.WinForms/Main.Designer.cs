@@ -35,8 +35,10 @@ namespace DiscordRPC.WinForms
             this.RPCTabControl = new System.Windows.Forms.TabControl();
             this.RPCSettingsTab = new System.Windows.Forms.TabPage();
             this.RPCLogTab = new System.Windows.Forms.TabPage();
+            this.LogText = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).BeginInit();
             this.RPCTabControl.SuspendLayout();
+            this.RPCLogTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // ConnectButon
@@ -53,14 +55,14 @@ namespace DiscordRPC.WinForms
             // ClientIDNumeric
             // 
             this.ClientIDNumeric.AccessibleName = "ClientIDNumeric";
-            this.ClientIDNumeric.Location = new System.Drawing.Point(668, 355);
+            this.ClientIDNumeric.Location = new System.Drawing.Point(583, 355);
             this.ClientIDNumeric.Maximum = new decimal(new int[] {
             -1486618625,
             232830643,
             0,
             0});
             this.ClientIDNumeric.Name = "ClientIDNumeric";
-            this.ClientIDNumeric.Size = new System.Drawing.Size(120, 23);
+            this.ClientIDNumeric.Size = new System.Drawing.Size(205, 23);
             this.ClientIDNumeric.TabIndex = 2;
             this.ClientIDNumeric.ValueChanged += new System.EventHandler(this.ClientIDNumeric_ValueChanged);
             // 
@@ -68,7 +70,7 @@ namespace DiscordRPC.WinForms
             // 
             this.ClientIDLabel.AccessibleName = "ClientIDLabel";
             this.ClientIDLabel.AutoSize = true;
-            this.ClientIDLabel.Location = new System.Drawing.Point(607, 357);
+            this.ClientIDLabel.Location = new System.Drawing.Point(522, 357);
             this.ClientIDLabel.Name = "ClientIDLabel";
             this.ClientIDLabel.Size = new System.Drawing.Size(55, 15);
             this.ClientIDLabel.TabIndex = 3;
@@ -99,6 +101,7 @@ namespace DiscordRPC.WinForms
             // RPCLogTab
             // 
             this.RPCLogTab.AccessibleName = "RPCLogTab";
+            this.RPCLogTab.Controls.Add(this.LogText);
             this.RPCLogTab.Location = new System.Drawing.Point(4, 24);
             this.RPCLogTab.Name = "RPCLogTab";
             this.RPCLogTab.Padding = new System.Windows.Forms.Padding(3);
@@ -106,6 +109,15 @@ namespace DiscordRPC.WinForms
             this.RPCLogTab.TabIndex = 2;
             this.RPCLogTab.Text = "Log";
             this.RPCLogTab.UseVisualStyleBackColor = true;
+            // 
+            // LogText
+            // 
+            this.LogText.AccessibleName = "LogText";
+            this.LogText.Location = new System.Drawing.Point(0, 0);
+            this.LogText.Name = "LogText";
+            this.LogText.Size = new System.Drawing.Size(780, 321);
+            this.LogText.TabIndex = 0;
+            this.LogText.Text = "";
             // 
             // Main
             // 
@@ -121,6 +133,7 @@ namespace DiscordRPC.WinForms
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).EndInit();
             this.RPCTabControl.ResumeLayout(false);
+            this.RPCLogTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +147,7 @@ namespace DiscordRPC.WinForms
         private System.Windows.Forms.TabControl RPCTabControl;
         private System.Windows.Forms.TabPage RPCSettingsTab;
         private System.Windows.Forms.TabPage RPCLogTab;
+        private System.Windows.Forms.RichTextBox LogText;
     }
 }
 
