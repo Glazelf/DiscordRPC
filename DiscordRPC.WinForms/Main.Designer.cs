@@ -51,8 +51,8 @@ namespace DiscordRPC.WinForms
             this.ClientIDNumeric.AccessibleName = "ClientIDNumeric";
             this.ClientIDNumeric.Location = new System.Drawing.Point(668, 355);
             this.ClientIDNumeric.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
+            -1486618625,
+            232830643,
             0,
             0});
             this.ClientIDNumeric.Name = "ClientIDNumeric";

@@ -8,7 +8,7 @@ namespace DiscordRPC.WinForms
         public Main()
         {
             InitializeComponent();
-            
+
         }
         long ClientID = Settings.Default.ClientID;
 
