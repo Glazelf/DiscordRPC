@@ -55,14 +55,14 @@ namespace DiscordRPC.WinForms
             // ClientIDNumeric
             // 
             this.ClientIDNumeric.AccessibleName = "ClientIDNumeric";
-            this.ClientIDNumeric.Location = new System.Drawing.Point(583, 355);
+            this.ClientIDNumeric.Location = new System.Drawing.Point(658, 355);
             this.ClientIDNumeric.Maximum = new decimal(new int[] {
             -1486618625,
             232830643,
             0,
             0});
             this.ClientIDNumeric.Name = "ClientIDNumeric";
-            this.ClientIDNumeric.Size = new System.Drawing.Size(205, 23);
+            this.ClientIDNumeric.Size = new System.Drawing.Size(130, 23);
             this.ClientIDNumeric.TabIndex = 2;
             this.ClientIDNumeric.ValueChanged += new System.EventHandler(this.ClientIDNumeric_ValueChanged);
             // 
@@ -70,7 +70,7 @@ namespace DiscordRPC.WinForms
             // 
             this.ClientIDLabel.AccessibleName = "ClientIDLabel";
             this.ClientIDLabel.AutoSize = true;
-            this.ClientIDLabel.Location = new System.Drawing.Point(522, 357);
+            this.ClientIDLabel.Location = new System.Drawing.Point(597, 357);
             this.ClientIDLabel.Name = "ClientIDLabel";
             this.ClientIDLabel.Size = new System.Drawing.Size(55, 15);
             this.ClientIDLabel.TabIndex = 3;
