@@ -30,6 +30,21 @@ namespace DiscordRPC.WinForms
             Therefore, always keep Discord running during tests, or use Discord.CreateFlags.NoRequireDiscord
             */
             var discord = new Discord.Discord(ClientID, (UInt64)Discord.CreateFlags.Default);
+
+            var activity = new Discord.Activity
+            {
+                State = "gay test",
+                Details = "wowzer",
+                Timestamps =
+                {
+                    Start = 5,
+                },
+            };
+            bool ActivityReturn = Core.Activity.UpdateActivity(discord, activity);
+            if(ActivityReturn == true)
+            {
+
+            }
         }
 
         private void ClientIDNumeric_ValueChanged(object sender, EventArgs e)
