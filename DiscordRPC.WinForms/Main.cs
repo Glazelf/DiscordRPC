@@ -20,18 +20,15 @@ namespace DiscordRPC.WinForms
         {
             ClientIDNumeric.Value = Settings.Default.ClientID;
             t = new Thread(EventLoop);
-            
         }
 
         bool ConnectedBool = false;
-        long ClientID = Settings.Default.ClientID;
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
-            ClientID = (long)ClientIDNumeric.Value;
             if (ConnectedBool == false)
             {
-                discord = new Discord.Discord(ClientID, (ulong)Discord.CreateFlags.Default);
+                discord = new Discord.Discord((long)ClientIDNumeric.Value, (ulong)Discord.CreateFlags.Default);
                 activityManager = discord.GetActivityManager();
                 discord.SetLogHook(Discord.LogLevel.Debug, LogProblemsFunction);
                 if(t.IsAlive != true)
@@ -119,6 +116,9 @@ namespace DiscordRPC.WinForms
                     LogText.Text += Environment.NewLine + "Error occurred while clearing activity.";
                     LogText.Text += Environment.NewLine + $"Error: {exception}";
                 }
+
+                // Thread.Abort is not supported in .Net 5.0 anymore, should find a better way to do this
+                // t.Abort();
                 
                 ChangeStateDisconnected();
                 LogText.Text += Environment.NewLine + "Disconnected.";
