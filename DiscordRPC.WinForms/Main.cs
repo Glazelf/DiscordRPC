@@ -30,15 +30,38 @@ namespace DiscordRPC.WinForms
                 discord = new Discord.Discord(ClientID, (ulong)Discord.CreateFlags.Default);
                 activityManager = discord.GetActivityManager();
                 discord.SetLogHook(Discord.LogLevel.Debug, LogProblemsFunction);
-
                 var activity = new Discord.Activity
                 {
                     State = "RPC test",
                     Details = "wowzer it works",
                     Timestamps =
-                {
-                    Start = 5,
-                },
+                    {
+                        Start = 5,
+                    },
+                    /*
+                    Assets =
+                    {
+                        LargeImage = "foo largeImageKey", // Larger Image Asset Key
+                        LargeText = "foo largeImageText", // Large Image Tooltip
+                        SmallImage = "foo smallImageKey", // Small Image Asset Key
+                        SmallText = "foo smallImageText", // Small Image Tooltip
+                    },
+                    Party =
+                    {
+                        Id = "foo partyID",
+                        Size = {
+                            CurrentSize = 1,
+                            MaxSize = 4,
+                        },
+                    },
+                    Secrets =
+                    {
+                        Match = "foo matchSecret",
+                        Join = "foo joinSecret",
+                        Spectate = "foo spectateSecret",
+                    },
+                    */
+                    Instance = true,
                 };
 
                 // Doesn't seem to get executed?
@@ -57,8 +80,20 @@ namespace DiscordRPC.WinForms
                         LogText.Text += Environment.NewLine + Convert.ToString(result);
                     }
                 });
-            } else
+            }
+            else
             {
+                activityManager.ClearActivity((result) =>
+                {
+                    if (result == Discord.Result.Ok)
+                    {
+                        LogText.Text += Environment.NewLine + "Cleared activity.";
+                    }
+                    else
+                    {
+                        LogText.Text += Environment.NewLine + "Failed to clear activity.";
+                    }
+                });
                 discord.Dispose();
                 ChangeStateDisconnected();
                 LogText.Text += Environment.NewLine + "Disconnected.";
@@ -100,7 +135,7 @@ namespace DiscordRPC.WinForms
             StatusConnectionText.Text = "Disconnected";
             ConnectButton.Text = "Connect";
             ConnectedBool = false;
-            
+
         }
     }
 }
