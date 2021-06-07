@@ -34,6 +34,14 @@ namespace DiscordRPC.WinForms
             this.ClientIDLabel = new System.Windows.Forms.Label();
             this.RPCTabControl = new System.Windows.Forms.TabControl();
             this.RPCSettingsTab = new System.Windows.Forms.TabPage();
+            this.SmallImageTooltipText = new System.Windows.Forms.TextBox();
+            this.SmallImageTooltipLabel = new System.Windows.Forms.Label();
+            this.SmallImageKeyLabel = new System.Windows.Forms.Label();
+            this.SmallImageKeyText = new System.Windows.Forms.TextBox();
+            this.LargeImageTooltipText = new System.Windows.Forms.TextBox();
+            this.LargeImageTooltipLabel = new System.Windows.Forms.Label();
+            this.LargeImageKeyText = new System.Windows.Forms.TextBox();
+            this.LargeImageKeyLabel = new System.Windows.Forms.Label();
             this.RPCLogTab = new System.Windows.Forms.TabPage();
             this.LogText = new System.Windows.Forms.RichTextBox();
             this.ConnectionGroup = new System.Windows.Forms.GroupBox();
@@ -43,6 +51,7 @@ namespace DiscordRPC.WinForms
             this.StatusConnectionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).BeginInit();
             this.RPCTabControl.SuspendLayout();
+            this.RPCSettingsTab.SuspendLayout();
             this.RPCLogTab.SuspendLayout();
             this.ConnectionGroup.SuspendLayout();
             this.StatusGroup.SuspendLayout();
@@ -91,19 +100,99 @@ namespace DiscordRPC.WinForms
             this.RPCTabControl.Location = new System.Drawing.Point(0, 0);
             this.RPCTabControl.Name = "RPCTabControl";
             this.RPCTabControl.SelectedIndex = 0;
-            this.RPCTabControl.Size = new System.Drawing.Size(528, 349);
+            this.RPCTabControl.Size = new System.Drawing.Size(528, 213);
             this.RPCTabControl.TabIndex = 4;
             // 
             // RPCSettingsTab
             // 
             this.RPCSettingsTab.AccessibleName = "RPCSettingsTab";
+            this.RPCSettingsTab.Controls.Add(this.SmallImageTooltipText);
+            this.RPCSettingsTab.Controls.Add(this.SmallImageTooltipLabel);
+            this.RPCSettingsTab.Controls.Add(this.SmallImageKeyLabel);
+            this.RPCSettingsTab.Controls.Add(this.SmallImageKeyText);
+            this.RPCSettingsTab.Controls.Add(this.LargeImageTooltipText);
+            this.RPCSettingsTab.Controls.Add(this.LargeImageTooltipLabel);
+            this.RPCSettingsTab.Controls.Add(this.LargeImageKeyText);
+            this.RPCSettingsTab.Controls.Add(this.LargeImageKeyLabel);
             this.RPCSettingsTab.Location = new System.Drawing.Point(4, 24);
             this.RPCSettingsTab.Name = "RPCSettingsTab";
             this.RPCSettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RPCSettingsTab.Size = new System.Drawing.Size(520, 321);
+            this.RPCSettingsTab.Size = new System.Drawing.Size(520, 185);
             this.RPCSettingsTab.TabIndex = 1;
             this.RPCSettingsTab.Text = "Settings";
             this.RPCSettingsTab.UseVisualStyleBackColor = true;
+            // 
+            // SmallImageTooltipText
+            // 
+            this.SmallImageTooltipText.AccessibleName = "SmallImageTooltipText";
+            this.SmallImageTooltipText.Location = new System.Drawing.Point(363, 35);
+            this.SmallImageTooltipText.Name = "SmallImageTooltipText";
+            this.SmallImageTooltipText.Size = new System.Drawing.Size(151, 23);
+            this.SmallImageTooltipText.TabIndex = 9;
+            // 
+            // SmallImageTooltipLabel
+            // 
+            this.SmallImageTooltipLabel.AccessibleName = "SmallImageTooltipLabel";
+            this.SmallImageTooltipLabel.AutoSize = true;
+            this.SmallImageTooltipLabel.Location = new System.Drawing.Point(243, 38);
+            this.SmallImageTooltipLabel.Name = "SmallImageTooltipLabel";
+            this.SmallImageTooltipLabel.Size = new System.Drawing.Size(114, 15);
+            this.SmallImageTooltipLabel.TabIndex = 7;
+            this.SmallImageTooltipLabel.Text = "Small Image Tooltip:";
+            // 
+            // SmallImageKeyLabel
+            // 
+            this.SmallImageKeyLabel.AccessibleName = "SmallImageKeyLabel";
+            this.SmallImageKeyLabel.AutoSize = true;
+            this.SmallImageKeyLabel.Location = new System.Drawing.Point(8, 38);
+            this.SmallImageKeyLabel.Name = "SmallImageKeyLabel";
+            this.SmallImageKeyLabel.Size = new System.Drawing.Size(128, 15);
+            this.SmallImageKeyLabel.TabIndex = 8;
+            this.SmallImageKeyLabel.Text = "Small Image Asset Key:";
+            // 
+            // SmallImageKeyText
+            // 
+            this.SmallImageKeyText.AccessibleName = "SmallImageKeyText";
+            this.SmallImageKeyText.Location = new System.Drawing.Point(137, 35);
+            this.SmallImageKeyText.Name = "SmallImageKeyText";
+            this.SmallImageKeyText.Size = new System.Drawing.Size(100, 23);
+            this.SmallImageKeyText.TabIndex = 7;
+            // 
+            // LargeImageTooltipText
+            // 
+            this.LargeImageTooltipText.AccessibleName = "LargeImageTooltipText";
+            this.LargeImageTooltipText.Location = new System.Drawing.Point(363, 6);
+            this.LargeImageTooltipText.Name = "LargeImageTooltipText";
+            this.LargeImageTooltipText.Size = new System.Drawing.Size(151, 23);
+            this.LargeImageTooltipText.TabIndex = 3;
+            // 
+            // LargeImageTooltipLabel
+            // 
+            this.LargeImageTooltipLabel.AccessibleName = "LargeImageTooltipLabel";
+            this.LargeImageTooltipLabel.AutoSize = true;
+            this.LargeImageTooltipLabel.Location = new System.Drawing.Point(243, 9);
+            this.LargeImageTooltipLabel.Name = "LargeImageTooltipLabel";
+            this.LargeImageTooltipLabel.Size = new System.Drawing.Size(114, 15);
+            this.LargeImageTooltipLabel.TabIndex = 2;
+            this.LargeImageTooltipLabel.Text = "Large Image Tooltip:";
+            // 
+            // LargeImageKeyText
+            // 
+            this.LargeImageKeyText.AccessibleName = "LargeImageKeyText";
+            this.LargeImageKeyText.Location = new System.Drawing.Point(137, 6);
+            this.LargeImageKeyText.Name = "LargeImageKeyText";
+            this.LargeImageKeyText.Size = new System.Drawing.Size(100, 23);
+            this.LargeImageKeyText.TabIndex = 1;
+            // 
+            // LargeImageKeyLabel
+            // 
+            this.LargeImageKeyLabel.AccessibleName = "LargeImageKeyLabel";
+            this.LargeImageKeyLabel.AutoSize = true;
+            this.LargeImageKeyLabel.Location = new System.Drawing.Point(8, 9);
+            this.LargeImageKeyLabel.Name = "LargeImageKeyLabel";
+            this.LargeImageKeyLabel.Size = new System.Drawing.Size(128, 15);
+            this.LargeImageKeyLabel.TabIndex = 0;
+            this.LargeImageKeyLabel.Text = "Large Image Asset Key:";
             // 
             // RPCLogTab
             // 
@@ -112,7 +201,7 @@ namespace DiscordRPC.WinForms
             this.RPCLogTab.Location = new System.Drawing.Point(4, 24);
             this.RPCLogTab.Name = "RPCLogTab";
             this.RPCLogTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RPCLogTab.Size = new System.Drawing.Size(520, 321);
+            this.RPCLogTab.Size = new System.Drawing.Size(520, 185);
             this.RPCLogTab.TabIndex = 2;
             this.RPCLogTab.Text = "Log";
             this.RPCLogTab.UseVisualStyleBackColor = true;
@@ -133,7 +222,7 @@ namespace DiscordRPC.WinForms
             this.ConnectionGroup.Controls.Add(this.ClientIDNumeric);
             this.ConnectionGroup.Controls.Add(this.ConnectButton);
             this.ConnectionGroup.Controls.Add(this.ClientIDLabel);
-            this.ConnectionGroup.Location = new System.Drawing.Point(324, 351);
+            this.ConnectionGroup.Location = new System.Drawing.Point(324, 219);
             this.ConnectionGroup.Name = "ConnectionGroup";
             this.ConnectionGroup.Size = new System.Drawing.Size(200, 100);
             this.ConnectionGroup.TabIndex = 5;
@@ -157,7 +246,7 @@ namespace DiscordRPC.WinForms
             this.StatusGroup.AccessibleName = "StatusGroup";
             this.StatusGroup.Controls.Add(this.StatusConnectionText);
             this.StatusGroup.Controls.Add(this.StatusConnectionLabel);
-            this.StatusGroup.Location = new System.Drawing.Point(4, 351);
+            this.StatusGroup.Location = new System.Drawing.Point(4, 219);
             this.StatusGroup.Name = "StatusGroup";
             this.StatusGroup.Size = new System.Drawing.Size(314, 100);
             this.StatusGroup.TabIndex = 6;
@@ -190,7 +279,7 @@ namespace DiscordRPC.WinForms
             this.AccessibleName = "Main";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 450);
+            this.ClientSize = new System.Drawing.Size(530, 324);
             this.Controls.Add(this.StatusGroup);
             this.Controls.Add(this.ConnectionGroup);
             this.Controls.Add(this.RPCTabControl);
@@ -199,6 +288,8 @@ namespace DiscordRPC.WinForms
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).EndInit();
             this.RPCTabControl.ResumeLayout(false);
+            this.RPCSettingsTab.ResumeLayout(false);
+            this.RPCSettingsTab.PerformLayout();
             this.RPCLogTab.ResumeLayout(false);
             this.ConnectionGroup.ResumeLayout(false);
             this.ConnectionGroup.PerformLayout();
@@ -222,6 +313,14 @@ namespace DiscordRPC.WinForms
         private System.Windows.Forms.Label StatusConnectionText;
         private System.Windows.Forms.Label StatusConnectionLabel;
         private System.Windows.Forms.Button SyncButton;
+        private System.Windows.Forms.Label LargeImageKeyLabel;
+        private System.Windows.Forms.Label SmallImageKeyLabel;
+        private System.Windows.Forms.TextBox SmallImageKeyText;
+        private System.Windows.Forms.TextBox LargeImageTooltipText;
+        private System.Windows.Forms.Label LargeImageTooltipLabel;
+        private System.Windows.Forms.TextBox LargeImageKeyText;
+        private System.Windows.Forms.TextBox SmallImageTooltipText;
+        private System.Windows.Forms.Label SmallImageTooltipLabel;
     }
 }
 
