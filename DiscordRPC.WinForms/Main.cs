@@ -38,71 +38,87 @@ namespace DiscordRPC.WinForms
                 {
                     t.Start();
                 }
-                
-                var activity = new Discord.Activity
-                {
-                    State = "RPC test",
-                    Details = "wowzer it works",
-                    Timestamps =
-                    {
-                        Start = 5,
-                    },
-                    /*
-                    Assets =
-                    {
-                        LargeImage = "foo largeImageKey", // Larger Image Asset Key
-                        LargeText = "foo largeImageText", // Large Image Tooltip
-                        SmallImage = "foo smallImageKey", // Small Image Asset Key
-                        SmallText = "foo smallImageText", // Small Image Tooltip
-                    },
-                    Party =
-                    {
-                        Id = "foo partyID",
-                        Size = {
-                            CurrentSize = 1,
-                            MaxSize = 4,
-                        },
-                    },
-                    Secrets =
-                    {
-                        Match = "foo matchSecret",
-                        Join = "foo joinSecret",
-                        Spectate = "foo spectateSecret",
-                    },
-                    */
-                    Instance = true,
-                };
 
-                // Doesn't seem to get executed?
-                activityManager.UpdateActivity(activity, (result) =>
+                try
                 {
-                    if (result == Discord.Result.Ok)
+                    var activity = new Discord.Activity
                     {
-                        ChangeStateConnected();
-                        LogText.Text += Environment.NewLine + "Successfully connected.";
-                        LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
-                    }
-                    else
+                        State = "RPC test",
+                        Details = "wowzer it works",
+
+                        /*
+                        Timestamps =
+                        {
+                            Start = 1,
+                        },
+                        Assets =
+                        {
+                            LargeImage = "foo largeImageKey", // Larger Image Asset Key
+                            LargeText = "foo largeImageText", // Large Image Tooltip
+                            SmallImage = "foo smallImageKey", // Small Image Asset Key
+                            SmallText = "foo smallImageText", // Small Image Tooltip
+                        },
+                        Party =
+                        {
+                            Id = "foo partyID",
+                            Size = {
+                                CurrentSize = 1,
+                                MaxSize = 4,
+                            },
+                        },
+                        Secrets =
+                        {
+                            Match = "foo matchSecret",
+                            Join = "foo joinSecret",
+                            Spectate = "foo spectateSecret",
+                        },
+                        */
+                        Instance = true,
+                    };
+
+
+                    // Doesn't seem to get executed?
+                    activityManager.UpdateActivity(activity, (result) =>
                     {
-                        ChangeStateDisconnected();
-                        LogText.Text += Environment.NewLine + "Failed to connect.";
-                        LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
-                    }
-                });
+                        if (result == Discord.Result.Ok)
+                        {
+                            ChangeStateConnected();
+                            LogText.Text += Environment.NewLine + "Successfully connected.";
+                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
+                        }
+                        else
+                        {
+                            ChangeStateDisconnected();
+                            LogText.Text += Environment.NewLine + "Failed to connect.";
+                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
+                        }
+                    });
+                } catch (Exception exception)
+                {
+                    LogText.Text += Environment.NewLine + "Error occurred while using your settings to create an activity.";
+                    LogText.Text += Environment.NewLine + $"Error: {exception}";
+                }
             }
             else
             {
-                activityManager.ClearActivity((result) =>
+                try
                 {
-                    if (result == Discord.Result.Ok)
+                    activityManager.ClearActivity((result) =>
                     {
-                        LogText.Text += Environment.NewLine + "Cleared activity.";
-                    }
-                    else
-                    {
-                        LogText.Text += Environment.NewLine + "Failed to clear activity.";
-                    }
-                });
+                        if (result == Discord.Result.Ok)
+                        {
+                            LogText.Text += Environment.NewLine + "Cleared activity.";
+                        }
+                        else
+                        {
+                            LogText.Text += Environment.NewLine + "Failed to clear activity.";
+                        }
+                    });
+                } catch (Exception exception)
+                {
+                    LogText.Text += Environment.NewLine + "Error occurred while clearing activity.";
+                    LogText.Text += Environment.NewLine + $"Error: {exception}";
+                }
                 
                 ChangeStateDisconnected();
                 LogText.Text += Environment.NewLine + "Disconnected.";
