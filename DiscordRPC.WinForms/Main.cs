@@ -19,6 +19,12 @@ namespace DiscordRPC.WinForms
         private void Main_Load(object sender, EventArgs e)
         {
             ClientIDNumeric.Value = Settings.Default.ClientID;
+            LargeImageKeyText.Text = Settings.Default.LargeImageAssetKey;
+            LargeImageTooltipText.Text = Settings.Default.LargeImageTooltip;
+            SmallImageKeyText.Text = Settings.Default.SmallImageAssetKey;
+            SmallImageTooltipText.Text = Settings.Default.SmallImageTooltip;
+            DetailsText.Text = Settings.Default.Details;
+            StateText.Text = Settings.Default.State;
             t = new Thread(EventLoop);
         }
 
@@ -40,20 +46,19 @@ namespace DiscordRPC.WinForms
                 {
                     var activity = new Discord.Activity
                     {
-                        State = "RPC test",
-                        Details = "wowzer it works",
-
-                        /*
-                        Timestamps =
-                        {
-                            Start = 1,
-                        },
+                        State = StateText.Text,
+                        Details = DetailsText.Text,
                         Assets =
                         {
-                            LargeImage = "foo largeImageKey", // Larger Image Asset Key
-                            LargeText = "foo largeImageText", // Large Image Tooltip
-                            SmallImage = "foo smallImageKey", // Small Image Asset Key
-                            SmallText = "foo smallImageText", // Small Image Tooltip
+                            LargeImage = LargeImageKeyText.Text, // Larger Image Asset Key
+                            LargeText = LargeImageTooltipText.Text, // Large Image Tooltip
+                            SmallImage = SmallImageKeyText.Text, // Small Image Asset Key
+                            SmallText = SmallImageTooltipText.Text, // Small Image Tooltip
+                        },
+                        /*
+                         * Timestamps =
+                        {
+                            Start = 1,
                         },
                         Party =
                         {
@@ -125,12 +130,6 @@ namespace DiscordRPC.WinForms
             }
         }
 
-        private void ClientIDNumeric_ValueChanged(object sender, EventArgs e)
-        {
-            Settings.Default.ClientID = (long)ClientIDNumeric.Value;
-            Settings.Default.Save();
-        }
-
         private void SyncButton_Click(object sender, EventArgs e)
         {
 
@@ -170,6 +169,48 @@ namespace DiscordRPC.WinForms
                 };
                 Invoke(mi);
             }
+        }
+
+        private void ClientIDNumeric_ValueChanged(object sender, EventArgs e)
+        {
+            Settings.Default.ClientID = (long)ClientIDNumeric.Value;
+            Settings.Default.Save();
+        }
+
+        private void LargeImageKeyText_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.LargeImageAssetKey = LargeImageKeyText.Text;
+            Settings.Default.Save();
+        }
+
+        private void LargeImageTooltipText_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.LargeImageTooltip = LargeImageTooltipText.Text;
+            Settings.Default.Save();
+        }
+
+        private void SmallImageKeyText_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.SmallImageAssetKey = SmallImageKeyText.Text;
+            Settings.Default.Save();
+        }
+
+        private void SmallImageTooltipText_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.SmallImageTooltip = SmallImageTooltipText.Text;
+            Settings.Default.Save();
+        }
+
+        private void DetailsText_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.Details = DetailsText.Text;
+            Settings.Default.Save();
+        }
+
+        private void StateText_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.State = StateText.Text;
+            Settings.Default.Save();
         }
     }
 }
