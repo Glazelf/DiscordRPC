@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DiscordRPC.WinForms
@@ -13,16 +14,19 @@ namespace DiscordRPC.WinForms
 
         Discord.Discord discord;
         Discord.ActivityManager activityManager;
+        Thread t;
 
         private void Main_Load(object sender, EventArgs e)
         {
             ClientIDNumeric.Value = Settings.Default.ClientID;
+            t = new Thread(EventLoop);
+            
         }
 
         bool ConnectedBool = false;
         long ClientID = Settings.Default.ClientID;
 
-        private void ConnectButton_Click(object sender, System.EventArgs e)
+        private void ConnectButton_Click(object sender, EventArgs e)
         {
             ClientID = (long)ClientIDNumeric.Value;
             if (ConnectedBool == false)
@@ -30,6 +34,11 @@ namespace DiscordRPC.WinForms
                 discord = new Discord.Discord(ClientID, (ulong)Discord.CreateFlags.Default);
                 activityManager = discord.GetActivityManager();
                 discord.SetLogHook(Discord.LogLevel.Debug, LogProblemsFunction);
+                if(t.IsAlive != true)
+                {
+                    t.Start();
+                }
+                
                 var activity = new Discord.Activity
                 {
                     State = "RPC test",
@@ -71,13 +80,13 @@ namespace DiscordRPC.WinForms
                     {
                         ChangeStateConnected();
                         LogText.Text += Environment.NewLine + "Successfully connected.";
-                        LogText.Text += Environment.NewLine + Convert.ToString(result);
+                        LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
                     }
                     else
                     {
                         ChangeStateDisconnected();
                         LogText.Text += Environment.NewLine + "Failed to connect.";
-                        LogText.Text += Environment.NewLine + Convert.ToString(result);
+                        LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
                     }
                 });
             }
@@ -94,7 +103,7 @@ namespace DiscordRPC.WinForms
                         LogText.Text += Environment.NewLine + "Failed to clear activity.";
                     }
                 });
-                discord.Dispose();
+                
                 ChangeStateDisconnected();
                 LogText.Text += Environment.NewLine + "Disconnected.";
             }
@@ -117,7 +126,6 @@ namespace DiscordRPC.WinForms
 
         public void ChangeStateConnected()
         {
-            ConnectButton.Enabled = false;
             SyncButton.Enabled = true;
             ClientIDNumeric.Enabled = false;
             StatusConnectionText.ForeColor = Color.Green;
@@ -136,6 +144,16 @@ namespace DiscordRPC.WinForms
             ConnectButton.Text = "Connect";
             ConnectedBool = false;
 
+        }
+        public void EventLoop()
+        {
+            while (true)
+            {
+                MethodInvoker mi = delegate () { 
+                    discord.RunCallbacks(); 
+                };
+                Invoke(mi);
+            }
         }
     }
 }
