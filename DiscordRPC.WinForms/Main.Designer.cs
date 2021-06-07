@@ -49,6 +49,10 @@ namespace DiscordRPC.WinForms
             this.StatusGroup = new System.Windows.Forms.GroupBox();
             this.StatusConnectionText = new System.Windows.Forms.Label();
             this.StatusConnectionLabel = new System.Windows.Forms.Label();
+            this.StateLabel = new System.Windows.Forms.Label();
+            this.StateText = new System.Windows.Forms.TextBox();
+            this.DetailsLabel = new System.Windows.Forms.Label();
+            this.DetailsText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).BeginInit();
             this.RPCTabControl.SuspendLayout();
             this.RPCSettingsTab.SuspendLayout();
@@ -100,12 +104,16 @@ namespace DiscordRPC.WinForms
             this.RPCTabControl.Location = new System.Drawing.Point(0, 0);
             this.RPCTabControl.Name = "RPCTabControl";
             this.RPCTabControl.SelectedIndex = 0;
-            this.RPCTabControl.Size = new System.Drawing.Size(528, 213);
+            this.RPCTabControl.Size = new System.Drawing.Size(528, 121);
             this.RPCTabControl.TabIndex = 4;
             // 
             // RPCSettingsTab
             // 
             this.RPCSettingsTab.AccessibleName = "RPCSettingsTab";
+            this.RPCSettingsTab.Controls.Add(this.DetailsText);
+            this.RPCSettingsTab.Controls.Add(this.DetailsLabel);
+            this.RPCSettingsTab.Controls.Add(this.StateText);
+            this.RPCSettingsTab.Controls.Add(this.StateLabel);
             this.RPCSettingsTab.Controls.Add(this.SmallImageTooltipText);
             this.RPCSettingsTab.Controls.Add(this.SmallImageTooltipLabel);
             this.RPCSettingsTab.Controls.Add(this.SmallImageKeyLabel);
@@ -117,7 +125,7 @@ namespace DiscordRPC.WinForms
             this.RPCSettingsTab.Location = new System.Drawing.Point(4, 24);
             this.RPCSettingsTab.Name = "RPCSettingsTab";
             this.RPCSettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RPCSettingsTab.Size = new System.Drawing.Size(520, 185);
+            this.RPCSettingsTab.Size = new System.Drawing.Size(520, 93);
             this.RPCSettingsTab.TabIndex = 1;
             this.RPCSettingsTab.Text = "Settings";
             this.RPCSettingsTab.UseVisualStyleBackColor = true;
@@ -222,7 +230,7 @@ namespace DiscordRPC.WinForms
             this.ConnectionGroup.Controls.Add(this.ClientIDNumeric);
             this.ConnectionGroup.Controls.Add(this.ConnectButton);
             this.ConnectionGroup.Controls.Add(this.ClientIDLabel);
-            this.ConnectionGroup.Location = new System.Drawing.Point(324, 219);
+            this.ConnectionGroup.Location = new System.Drawing.Point(324, 123);
             this.ConnectionGroup.Name = "ConnectionGroup";
             this.ConnectionGroup.Size = new System.Drawing.Size(200, 100);
             this.ConnectionGroup.TabIndex = 5;
@@ -246,7 +254,7 @@ namespace DiscordRPC.WinForms
             this.StatusGroup.AccessibleName = "StatusGroup";
             this.StatusGroup.Controls.Add(this.StatusConnectionText);
             this.StatusGroup.Controls.Add(this.StatusConnectionLabel);
-            this.StatusGroup.Location = new System.Drawing.Point(4, 219);
+            this.StatusGroup.Location = new System.Drawing.Point(4, 123);
             this.StatusGroup.Name = "StatusGroup";
             this.StatusGroup.Size = new System.Drawing.Size(314, 100);
             this.StatusGroup.TabIndex = 6;
@@ -274,12 +282,48 @@ namespace DiscordRPC.WinForms
             this.StatusConnectionLabel.TabIndex = 7;
             this.StatusConnectionLabel.Text = "Connection:";
             // 
+            // StateLabel
+            // 
+            this.StateLabel.AccessibleName = "StateLabel";
+            this.StateLabel.AutoSize = true;
+            this.StateLabel.Location = new System.Drawing.Point(8, 67);
+            this.StateLabel.Name = "StateLabel";
+            this.StateLabel.Size = new System.Drawing.Size(36, 15);
+            this.StateLabel.TabIndex = 7;
+            this.StateLabel.Text = "State:";
+            // 
+            // StateText
+            // 
+            this.StateText.AccessibleName = "StateText";
+            this.StateText.Location = new System.Drawing.Point(50, 64);
+            this.StateText.Name = "StateText";
+            this.StateText.Size = new System.Drawing.Size(187, 23);
+            this.StateText.TabIndex = 10;
+            // 
+            // DetailsLabel
+            // 
+            this.DetailsLabel.AccessibleName = "DetailsLabel";
+            this.DetailsLabel.AutoSize = true;
+            this.DetailsLabel.Location = new System.Drawing.Point(243, 67);
+            this.DetailsLabel.Name = "DetailsLabel";
+            this.DetailsLabel.Size = new System.Drawing.Size(45, 15);
+            this.DetailsLabel.TabIndex = 11;
+            this.DetailsLabel.Text = "Details:";
+            // 
+            // DetailsText
+            // 
+            this.DetailsText.AccessibleName = "DetailsText";
+            this.DetailsText.Location = new System.Drawing.Point(294, 64);
+            this.DetailsText.Name = "DetailsText";
+            this.DetailsText.Size = new System.Drawing.Size(220, 23);
+            this.DetailsText.TabIndex = 12;
+            // 
             // Main
             // 
             this.AccessibleName = "Main";
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 324);
+            this.ClientSize = new System.Drawing.Size(530, 229);
             this.Controls.Add(this.StatusGroup);
             this.Controls.Add(this.ConnectionGroup);
             this.Controls.Add(this.RPCTabControl);
@@ -321,6 +365,10 @@ namespace DiscordRPC.WinForms
         private System.Windows.Forms.TextBox LargeImageKeyText;
         private System.Windows.Forms.TextBox SmallImageTooltipText;
         private System.Windows.Forms.Label SmallImageTooltipLabel;
+        private System.Windows.Forms.TextBox DetailsText;
+        private System.Windows.Forms.Label DetailsLabel;
+        private System.Windows.Forms.TextBox StateText;
+        private System.Windows.Forms.Label StateLabel;
     }
 }
 
