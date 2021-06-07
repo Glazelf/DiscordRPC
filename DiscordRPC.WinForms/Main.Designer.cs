@@ -34,6 +34,10 @@ namespace DiscordRPC.WinForms
             this.ClientIDLabel = new System.Windows.Forms.Label();
             this.RPCTabControl = new System.Windows.Forms.TabControl();
             this.RPCSettingsTab = new System.Windows.Forms.TabPage();
+            this.DetailsText = new System.Windows.Forms.TextBox();
+            this.DetailsLabel = new System.Windows.Forms.Label();
+            this.StateText = new System.Windows.Forms.TextBox();
+            this.StateLabel = new System.Windows.Forms.Label();
             this.SmallImageTooltipText = new System.Windows.Forms.TextBox();
             this.SmallImageTooltipLabel = new System.Windows.Forms.Label();
             this.SmallImageKeyLabel = new System.Windows.Forms.Label();
@@ -49,10 +53,6 @@ namespace DiscordRPC.WinForms
             this.StatusGroup = new System.Windows.Forms.GroupBox();
             this.StatusConnectionText = new System.Windows.Forms.Label();
             this.StatusConnectionLabel = new System.Windows.Forms.Label();
-            this.StateLabel = new System.Windows.Forms.Label();
-            this.StateText = new System.Windows.Forms.TextBox();
-            this.DetailsLabel = new System.Windows.Forms.Label();
-            this.DetailsText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).BeginInit();
             this.RPCTabControl.SuspendLayout();
             this.RPCSettingsTab.SuspendLayout();
@@ -130,12 +130,50 @@ namespace DiscordRPC.WinForms
             this.RPCSettingsTab.Text = "Settings";
             this.RPCSettingsTab.UseVisualStyleBackColor = true;
             // 
+            // DetailsText
+            // 
+            this.DetailsText.AccessibleName = "DetailsText";
+            this.DetailsText.Location = new System.Drawing.Point(59, 64);
+            this.DetailsText.Name = "DetailsText";
+            this.DetailsText.Size = new System.Drawing.Size(178, 23);
+            this.DetailsText.TabIndex = 12;
+            this.DetailsText.TextChanged += new System.EventHandler(this.DetailsText_TextChanged);
+            // 
+            // DetailsLabel
+            // 
+            this.DetailsLabel.AccessibleName = "DetailsLabel";
+            this.DetailsLabel.AutoSize = true;
+            this.DetailsLabel.Location = new System.Drawing.Point(8, 67);
+            this.DetailsLabel.Name = "DetailsLabel";
+            this.DetailsLabel.Size = new System.Drawing.Size(45, 15);
+            this.DetailsLabel.TabIndex = 11;
+            this.DetailsLabel.Text = "Details:";
+            // 
+            // StateText
+            // 
+            this.StateText.AccessibleName = "StateText";
+            this.StateText.Location = new System.Drawing.Point(285, 64);
+            this.StateText.Name = "StateText";
+            this.StateText.Size = new System.Drawing.Size(229, 23);
+            this.StateText.TabIndex = 10;
+            this.StateText.TextChanged += new System.EventHandler(this.StateText_TextChanged);
+            // 
+            // StateLabel
+            // 
+            this.StateLabel.AccessibleName = "StateLabel";
+            this.StateLabel.AutoSize = true;
+            this.StateLabel.Location = new System.Drawing.Point(243, 67);
+            this.StateLabel.Name = "StateLabel";
+            this.StateLabel.Size = new System.Drawing.Size(36, 15);
+            this.StateLabel.TabIndex = 7;
+            this.StateLabel.Text = "State:";
+            // 
             // SmallImageTooltipText
             // 
             this.SmallImageTooltipText.AccessibleName = "SmallImageTooltipText";
-            this.SmallImageTooltipText.Location = new System.Drawing.Point(363, 35);
+            this.SmallImageTooltipText.Location = new System.Drawing.Point(383, 35);
             this.SmallImageTooltipText.Name = "SmallImageTooltipText";
-            this.SmallImageTooltipText.Size = new System.Drawing.Size(151, 23);
+            this.SmallImageTooltipText.Size = new System.Drawing.Size(131, 23);
             this.SmallImageTooltipText.TabIndex = 9;
             this.SmallImageTooltipText.TextChanged += new System.EventHandler(this.SmallImageTooltipText_TextChanged);
             // 
@@ -145,9 +183,9 @@ namespace DiscordRPC.WinForms
             this.SmallImageTooltipLabel.AutoSize = true;
             this.SmallImageTooltipLabel.Location = new System.Drawing.Point(243, 38);
             this.SmallImageTooltipLabel.Name = "SmallImageTooltipLabel";
-            this.SmallImageTooltipLabel.Size = new System.Drawing.Size(114, 15);
+            this.SmallImageTooltipLabel.Size = new System.Drawing.Size(134, 15);
             this.SmallImageTooltipLabel.TabIndex = 7;
-            this.SmallImageTooltipLabel.Text = "Small Image Tooltip:";
+            this.SmallImageTooltipLabel.Text = "Small Image Hover Text:";
             // 
             // SmallImageKeyLabel
             // 
@@ -171,9 +209,9 @@ namespace DiscordRPC.WinForms
             // LargeImageTooltipText
             // 
             this.LargeImageTooltipText.AccessibleName = "LargeImageTooltipText";
-            this.LargeImageTooltipText.Location = new System.Drawing.Point(363, 6);
+            this.LargeImageTooltipText.Location = new System.Drawing.Point(383, 6);
             this.LargeImageTooltipText.Name = "LargeImageTooltipText";
-            this.LargeImageTooltipText.Size = new System.Drawing.Size(151, 23);
+            this.LargeImageTooltipText.Size = new System.Drawing.Size(131, 23);
             this.LargeImageTooltipText.TabIndex = 3;
             this.LargeImageTooltipText.TextChanged += new System.EventHandler(this.LargeImageTooltipText_TextChanged);
             // 
@@ -183,9 +221,9 @@ namespace DiscordRPC.WinForms
             this.LargeImageTooltipLabel.AutoSize = true;
             this.LargeImageTooltipLabel.Location = new System.Drawing.Point(243, 9);
             this.LargeImageTooltipLabel.Name = "LargeImageTooltipLabel";
-            this.LargeImageTooltipLabel.Size = new System.Drawing.Size(114, 15);
+            this.LargeImageTooltipLabel.Size = new System.Drawing.Size(134, 15);
             this.LargeImageTooltipLabel.TabIndex = 2;
-            this.LargeImageTooltipLabel.Text = "Large Image Tooltip:";
+            this.LargeImageTooltipLabel.Text = "Large Image Hover Text:";
             // 
             // LargeImageKeyText
             // 
@@ -213,7 +251,7 @@ namespace DiscordRPC.WinForms
             this.RPCLogTab.Location = new System.Drawing.Point(4, 24);
             this.RPCLogTab.Name = "RPCLogTab";
             this.RPCLogTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RPCLogTab.Size = new System.Drawing.Size(520, 185);
+            this.RPCLogTab.Size = new System.Drawing.Size(520, 93);
             this.RPCLogTab.TabIndex = 2;
             this.RPCLogTab.Text = "Log";
             this.RPCLogTab.UseVisualStyleBackColor = true;
@@ -285,44 +323,6 @@ namespace DiscordRPC.WinForms
             this.StatusConnectionLabel.Size = new System.Drawing.Size(72, 15);
             this.StatusConnectionLabel.TabIndex = 7;
             this.StatusConnectionLabel.Text = "Connection:";
-            // 
-            // StateLabel
-            // 
-            this.StateLabel.AccessibleName = "StateLabel";
-            this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(243, 67);
-            this.StateLabel.Name = "StateLabel";
-            this.StateLabel.Size = new System.Drawing.Size(36, 15);
-            this.StateLabel.TabIndex = 7;
-            this.StateLabel.Text = "State:";
-            // 
-            // StateText
-            // 
-            this.StateText.AccessibleName = "StateText";
-            this.StateText.Location = new System.Drawing.Point(285, 64);
-            this.StateText.Name = "StateText";
-            this.StateText.Size = new System.Drawing.Size(229, 23);
-            this.StateText.TabIndex = 10;
-            this.StateText.TextChanged += new System.EventHandler(this.StateText_TextChanged);
-            // 
-            // DetailsLabel
-            // 
-            this.DetailsLabel.AccessibleName = "DetailsLabel";
-            this.DetailsLabel.AutoSize = true;
-            this.DetailsLabel.Location = new System.Drawing.Point(8, 67);
-            this.DetailsLabel.Name = "DetailsLabel";
-            this.DetailsLabel.Size = new System.Drawing.Size(45, 15);
-            this.DetailsLabel.TabIndex = 11;
-            this.DetailsLabel.Text = "Details:";
-            // 
-            // DetailsText
-            // 
-            this.DetailsText.AccessibleName = "DetailsText";
-            this.DetailsText.Location = new System.Drawing.Point(59, 64);
-            this.DetailsText.Name = "DetailsText";
-            this.DetailsText.Size = new System.Drawing.Size(178, 23);
-            this.DetailsText.TabIndex = 12;
-            this.DetailsText.TextChanged += new System.EventHandler(this.DetailsText_TextChanged);
             // 
             // Main
             // 

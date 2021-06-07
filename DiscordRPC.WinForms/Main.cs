@@ -34,72 +34,21 @@ namespace DiscordRPC.WinForms
         {
             if (ConnectedBool == false)
             {
-                discord = new Discord.Discord((long)ClientIDNumeric.Value, (ulong)Discord.CreateFlags.Default);
+                try
+                {
+                    discord = new Discord.Discord((long)ClientIDNumeric.Value, (ulong)Discord.CreateFlags.Default);
+                }
+                catch (Exception ex)
+                {
+                    LogError(ex);
+                }
                 activityManager = discord.GetActivityManager();
                 discord.SetLogHook(Discord.LogLevel.Debug, LogProblemsFunction);
-                if(t.IsAlive != true)
+                if (t.IsAlive != true)
                 {
                     t.Start();
                 }
-
-                try
-                {
-                    var activity = new Discord.Activity
-                    {
-                        State = StateText.Text,
-                        Details = DetailsText.Text,
-                        Assets =
-                        {
-                            LargeImage = LargeImageKeyText.Text, // Larger Image Asset Key
-                            LargeText = LargeImageTooltipText.Text, // Large Image Tooltip
-                            SmallImage = SmallImageKeyText.Text, // Small Image Asset Key
-                            SmallText = SmallImageTooltipText.Text, // Small Image Tooltip
-                        },
-                        /*
-                         * Timestamps =
-                        {
-                            Start = 1,
-                        },
-                        Party =
-                        {
-                            Id = "foo partyID",
-                            Size = {
-                                CurrentSize = 1,
-                                MaxSize = 4,
-                            },
-                        },
-                        Secrets =
-                        {
-                            Match = "foo matchSecret",
-                            Join = "foo joinSecret",
-                            Spectate = "foo spectateSecret",
-                        },
-                        */
-                        Instance = true,
-                    };
-
-
-                    // Doesn't seem to get executed?
-                    activityManager.UpdateActivity(activity, (result) =>
-                    {
-                        if (result == Discord.Result.Ok)
-                        {
-                            ChangeStateConnected();
-                            LogText.Text += Environment.NewLine + "Successfully connected.";
-                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
-                        }
-                        else
-                        {
-                            ChangeStateDisconnected();
-                            LogText.Text += Environment.NewLine + "Failed to connect.";
-                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
-                        }
-                    });
-                } catch (Exception exception)
-                {
-                    LogText.Text += Environment.NewLine + "Error occurred while using your settings to create an activity.";
-                    LogText.Text += Environment.NewLine + $"Error: {exception}";
-                }
+                SetActivity();
             }
             else
             {
@@ -116,15 +65,15 @@ namespace DiscordRPC.WinForms
                             LogText.Text += Environment.NewLine + "Failed to clear activity.";
                         }
                     });
-                } catch (Exception exception)
+                }
+                catch (Exception ex)
                 {
-                    LogText.Text += Environment.NewLine + "Error occurred while clearing activity.";
-                    LogText.Text += Environment.NewLine + $"Error: {exception}";
+                    LogError(ex);
                 }
 
                 // Thread.Abort is not supported in .Net 5.0 anymore, should find a better way to do this
                 // t.Abort();
-                
+
                 ChangeStateDisconnected();
                 LogText.Text += Environment.NewLine + "Disconnected.";
             }
@@ -132,8 +81,13 @@ namespace DiscordRPC.WinForms
 
         private void SyncButton_Click(object sender, EventArgs e)
         {
-
+            if (t.IsAlive != true)
+            {
+                t.Start();
+            }
+            SetActivity();
         }
+
         public void LogProblemsFunction(Discord.LogLevel level, string message)
         {
             LogText.Text += Environment.NewLine + $"Discord:{level} - {message}";
@@ -158,14 +112,75 @@ namespace DiscordRPC.WinForms
             StatusConnectionText.Text = "Disconnected";
             ConnectButton.Text = "Connect";
             ConnectedBool = false;
-
         }
+
+        public void SetActivity()
+        {
+            try
+            {
+                var activity = new Discord.Activity
+                {
+                    State = StateText.Text,
+                    Details = DetailsText.Text,
+                    Assets =
+                        {
+                            LargeImage = LargeImageKeyText.Text, // Larger Image Asset Key
+                            LargeText = LargeImageTooltipText.Text, // Large Image Tooltip
+                            SmallImage = SmallImageKeyText.Text, // Small Image Asset Key
+                            SmallText = SmallImageTooltipText.Text, // Small Image Tooltip
+                        },
+                    /*
+                    Timestamps =
+                    {
+                        Start = 1,
+                    },
+                    Party =
+                    {
+                        Id = "foo partyID",
+                        Size = {
+                            CurrentSize = 1,
+                            MaxSize = 4,
+                        },
+                    },
+                    Secrets =
+                    {
+                        Match = "foo matchSecret",
+                        Join = "foo joinSecret",
+                        Spectate = "foo spectateSecret",
+                    },
+                    */
+                    Instance = true,
+                };
+
+                activityManager.UpdateActivity(activity, (result) =>
+                {
+                    if (result == Discord.Result.Ok)
+                    {
+                        ChangeStateConnected();
+                        LogText.Text += Environment.NewLine + "Successfully connected.";
+                        LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
+                    }
+                    else
+                    {
+                        ChangeStateDisconnected();
+                        LogText.Text += Environment.NewLine + "Failed to connect.";
+                        LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);                
+            }
+        }
+
         public void EventLoop()
         {
             while (true)
             {
-                MethodInvoker mi = delegate () { 
-                    discord.RunCallbacks(); 
+                MethodInvoker mi = delegate ()
+                {
+                    discord.RunCallbacks();
                 };
                 Invoke(mi);
             }
@@ -211,6 +226,11 @@ namespace DiscordRPC.WinForms
         {
             Settings.Default.State = StateText.Text;
             Settings.Default.Save();
+        }
+
+        public void LogError(Exception ex)
+        {
+            LogText.Text += Environment.NewLine + $"Error: {ex.Message}\n{ex.StackTrace}";
         }
     }
 }
