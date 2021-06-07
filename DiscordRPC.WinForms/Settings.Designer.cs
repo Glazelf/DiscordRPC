@@ -34,5 +34,77 @@ namespace DiscordRPC.WinForms {
                 this["ClientID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LargeImageAssetKey {
+            get {
+                return ((string)(this["LargeImageAssetKey"]));
+            }
+            set {
+                this["LargeImageAssetKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LargeImageTooltip {
+            get {
+                return ((string)(this["LargeImageTooltip"]));
+            }
+            set {
+                this["LargeImageTooltip"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SmallImageAssetKey {
+            get {
+                return ((string)(this["SmallImageAssetKey"]));
+            }
+            set {
+                this["SmallImageAssetKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SmallImageTooltip {
+            get {
+                return ((string)(this["SmallImageTooltip"]));
+            }
+            set {
+                this["SmallImageTooltip"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string State {
+            get {
+                return ((string)(this["State"]));
+            }
+            set {
+                this["State"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Details {
+            get {
+                return ((string)(this["Details"]));
+            }
+            set {
+                this["Details"] = value;
+            }
+        }
     }
 }
