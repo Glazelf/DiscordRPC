@@ -170,7 +170,7 @@ namespace DiscordRPC.WinForms
             }
             catch (Exception ex)
             {
-                LogError(ex);                
+                LogError(ex);
             }
         }
 
