@@ -37,10 +37,10 @@ namespace DiscordRPC.WinForms
             this.RPCLogTab = new System.Windows.Forms.TabPage();
             this.LogText = new System.Windows.Forms.RichTextBox();
             this.ConnectionGroup = new System.Windows.Forms.GroupBox();
+            this.SyncButton = new System.Windows.Forms.Button();
             this.StatusGroup = new System.Windows.Forms.GroupBox();
             this.StatusConnectionText = new System.Windows.Forms.Label();
             this.StatusConnectionLabel = new System.Windows.Forms.Label();
-            this.SyncButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).BeginInit();
             this.RPCTabControl.SuspendLayout();
             this.RPCLogTab.SuspendLayout();
@@ -140,6 +140,18 @@ namespace DiscordRPC.WinForms
             this.ConnectionGroup.TabStop = false;
             this.ConnectionGroup.Text = "Connection";
             // 
+            // SyncButton
+            // 
+            this.SyncButton.AccessibleName = "SyncButton";
+            this.SyncButton.Enabled = false;
+            this.SyncButton.Location = new System.Drawing.Point(106, 64);
+            this.SyncButton.Name = "SyncButton";
+            this.SyncButton.Size = new System.Drawing.Size(75, 23);
+            this.SyncButton.TabIndex = 4;
+            this.SyncButton.Text = "Sync";
+            this.SyncButton.UseVisualStyleBackColor = true;
+            this.SyncButton.Click += new System.EventHandler(this.SyncButton_Click);
+            // 
             // StatusGroup
             // 
             this.StatusGroup.AccessibleName = "StatusGroup";
@@ -172,18 +184,6 @@ namespace DiscordRPC.WinForms
             this.StatusConnectionLabel.Size = new System.Drawing.Size(72, 15);
             this.StatusConnectionLabel.TabIndex = 7;
             this.StatusConnectionLabel.Text = "Connection:";
-            // 
-            // SyncButton
-            // 
-            this.SyncButton.AccessibleName = "SyncButton";
-            this.SyncButton.Enabled = false;
-            this.SyncButton.Location = new System.Drawing.Point(106, 64);
-            this.SyncButton.Name = "SyncButton";
-            this.SyncButton.Size = new System.Drawing.Size(75, 23);
-            this.SyncButton.TabIndex = 4;
-            this.SyncButton.Text = "Sync";
-            this.SyncButton.UseVisualStyleBackColor = true;
-            this.SyncButton.Click += new System.EventHandler(this.SyncButton_Click);
             // 
             // Main
             // 
