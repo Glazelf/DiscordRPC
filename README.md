@@ -1,6 +1,6 @@
 # DiscordRPC
 Implementing a Discord Rich Presence through a C# app.  
-Mostly testing and for personal use as of now.
+Since Discord-RPC is deprecated and can fall out of usability at any time, I made this using the Discord Game SDK for longevity purposes.
 
 ## Support
 For questions or support either [create a discussion](https://github.com/Glazelf/DiscordRPC/discussions) or join my Discord.  
