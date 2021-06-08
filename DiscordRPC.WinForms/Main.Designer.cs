@@ -336,6 +336,7 @@ namespace DiscordRPC.WinForms
             this.Controls.Add(this.ConnectionGroup);
             this.Controls.Add(this.RPCTabControl);
             this.Name = "Main";
+            this.ShowInTaskbar = false;
             this.Text = "DiscordRPC";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).EndInit();
