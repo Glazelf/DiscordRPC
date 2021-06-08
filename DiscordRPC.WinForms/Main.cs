@@ -14,9 +14,7 @@ namespace DiscordRPC.WinForms
 
         Discord.Discord discord;
         Discord.ActivityManager activityManager;
-        
-        bool runActivity;
-        bool threadRunning;
+        bool threadRunning = false;
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -35,8 +33,6 @@ namespace DiscordRPC.WinForms
                 LogError(ex);
             }
         }
-
-        bool ConnectedBool = false;
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
@@ -77,7 +73,6 @@ namespace DiscordRPC.WinForms
             StatusConnectionText.ForeColor = Color.Green;
             StatusConnectionText.Text = "Connected";
             ConnectButton.Enabled = false;
-            ConnectedBool = true;
         }
 
         public void SetActivity()
@@ -132,7 +127,6 @@ namespace DiscordRPC.WinForms
                         LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
                     }
                 });
-                runActivity = true;
 
                 if (threadRunning == false)
                 {
@@ -150,7 +144,7 @@ namespace DiscordRPC.WinForms
         {
             try
             {
-                while (runActivity == true)
+                while (true)
                 {
                     discord.RunCallbacks();
                 }
