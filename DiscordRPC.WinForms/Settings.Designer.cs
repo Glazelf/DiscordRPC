@@ -25,7 +25,7 @@ namespace DiscordRPC.WinForms {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("848497216813137931")]
         public long ClientID {
             get {
                 return ((long)(this["ClientID"]));
