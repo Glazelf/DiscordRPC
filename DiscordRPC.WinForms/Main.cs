@@ -14,7 +14,8 @@ namespace DiscordRPC.WinForms
 
         Discord.Discord discord;
         Discord.ActivityManager activityManager;
-        Thread t;
+        
+        bool runActivity;
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -27,8 +28,6 @@ namespace DiscordRPC.WinForms
                 SmallImageTooltipText.Text = Settings.Default.SmallImageTooltip;
                 DetailsText.Text = Settings.Default.Details;
                 StateText.Text = Settings.Default.State;
-
-                t = new Thread(EventLoop);
             }
             catch (Exception ex)
             {
@@ -47,10 +46,6 @@ namespace DiscordRPC.WinForms
                     discord = new Discord.Discord((long)ClientIDNumeric.Value, (ulong)Discord.CreateFlags.Default);
                     activityManager = discord.GetActivityManager();
                     discord.SetLogHook(Discord.LogLevel.Debug, LogProblemsFunction);
-                    if (t.IsAlive != true)
-                    {
-                        t.Start();
-                    }
                     SetActivity();
                 }
                 catch (Exception ex)
@@ -67,14 +62,14 @@ namespace DiscordRPC.WinForms
                         if (result == Discord.Result.Ok)
                         {
                             LogText.Text += Environment.NewLine + "Cleared activity.";
+                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
                         }
                         else
                         {
                             LogText.Text += Environment.NewLine + "Failed to clear activity.";
+                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
                         }
                     });
-                    // Thread.Abort is not supported in .Net 5.0 anymore, should find a better way to do this
-                    // t.Abort();
 
                     ChangeStateDisconnected();
                     LogText.Text += Environment.NewLine + "Disconnected.";
@@ -90,10 +85,6 @@ namespace DiscordRPC.WinForms
         {
             try
             {
-                if (t.IsAlive != true)
-                {
-                    t.Start();
-                }
                 SetActivity();
             }
             catch (Exception ex)
@@ -126,6 +117,8 @@ namespace DiscordRPC.WinForms
             StatusConnectionText.Text = "Disconnected";
             ConnectButton.Text = "Connect";
             ConnectedBool = false;
+
+            runActivity = false;
         }
 
         public void SetActivity()
@@ -181,6 +174,8 @@ namespace DiscordRPC.WinForms
                         LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
                     }
                 });
+                runActivity = true;
+                ThreadPool.QueueUserWorkItem(EventLoop);
             }
             catch (Exception ex)
             {
@@ -188,17 +183,13 @@ namespace DiscordRPC.WinForms
             }
         }
 
-        public void EventLoop()
+        public void EventLoop(object threadContext)
         {
             try
             {
-                while (true)
+                while (runActivity == true)
                 {
-                    MethodInvoker mi = delegate ()
-                    {
-                        discord.RunCallbacks();
-                    };
-                    Invoke(mi);
+                    discord.RunCallbacks();
                 }
             }
             catch (Exception ex)
