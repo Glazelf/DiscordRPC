@@ -16,6 +16,7 @@ namespace DiscordRPC.WinForms
         Discord.ActivityManager activityManager;
         
         bool runActivity;
+        bool threadRunning;
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -39,8 +40,6 @@ namespace DiscordRPC.WinForms
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
-            if (ConnectedBool == false)
-            {
                 try
                 {
                     discord = new Discord.Discord((long)ClientIDNumeric.Value, (ulong)Discord.CreateFlags.Default);
@@ -52,33 +51,6 @@ namespace DiscordRPC.WinForms
                 {
                     LogError(ex);
                 }
-            }
-            else
-            {
-                try
-                {
-                    activityManager.ClearActivity((result) =>
-                    {
-                        if (result == Discord.Result.Ok)
-                        {
-                            LogText.Text += Environment.NewLine + "Cleared activity.";
-                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
-                        }
-                        else
-                        {
-                            LogText.Text += Environment.NewLine + "Failed to clear activity.";
-                            LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
-                        }
-                    });
-
-                    ChangeStateDisconnected();
-                    LogText.Text += Environment.NewLine + "Disconnected.";
-                }
-                catch (Exception ex)
-                {
-                    LogError(ex);
-                }
-            }
         }
 
         private void SyncButton_Click(object sender, EventArgs e)
@@ -104,21 +76,8 @@ namespace DiscordRPC.WinForms
             ClientIDNumeric.Enabled = false;
             StatusConnectionText.ForeColor = Color.Green;
             StatusConnectionText.Text = "Connected";
-            ConnectButton.Text = "Disconnect";
+            ConnectButton.Enabled = false;
             ConnectedBool = true;
-        }
-
-        public void ChangeStateDisconnected()
-        {
-            ConnectButton.Enabled = true;
-            SyncButton.Enabled = false;
-            ClientIDNumeric.Enabled = true;
-            StatusConnectionText.ForeColor = Color.Red;
-            StatusConnectionText.Text = "Disconnected";
-            ConnectButton.Text = "Connect";
-            ConnectedBool = false;
-
-            runActivity = false;
         }
 
         public void SetActivity()
@@ -156,7 +115,7 @@ namespace DiscordRPC.WinForms
                         Spectate = "foo spectateSecret",
                     },
                     */
-                    Instance = true,
+                    Instance = false,
                 };
 
                 activityManager.UpdateActivity(activity, (result) =>
@@ -169,13 +128,17 @@ namespace DiscordRPC.WinForms
                     }
                     else
                     {
-                        ChangeStateDisconnected();
                         LogText.Text += Environment.NewLine + "Failed to connect.";
                         LogText.Text += Environment.NewLine + $"Discord response: {Convert.ToString(result)}";
                     }
                 });
                 runActivity = true;
-                ThreadPool.QueueUserWorkItem(EventLoop);
+
+                if (threadRunning == false)
+                {
+                    threadRunning = true;
+                    ThreadPool.QueueUserWorkItem(EventLoop);
+                }
             }
             catch (Exception ex)
             {
