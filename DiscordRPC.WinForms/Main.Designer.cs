@@ -200,6 +200,7 @@ namespace DiscordRPC.WinForms
             // SmallImageKeyText
             // 
             this.SmallImageKeyText.AccessibleName = "SmallImageKeyText";
+            this.SmallImageKeyText.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.SmallImageKeyText.Location = new System.Drawing.Point(124, 35);
             this.SmallImageKeyText.Name = "SmallImageKeyText";
             this.SmallImageKeyText.Size = new System.Drawing.Size(113, 23);
@@ -228,6 +229,7 @@ namespace DiscordRPC.WinForms
             // LargeImageKeyText
             // 
             this.LargeImageKeyText.AccessibleName = "LargeImageKeyText";
+            this.LargeImageKeyText.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.LargeImageKeyText.Location = new System.Drawing.Point(124, 6);
             this.LargeImageKeyText.Name = "LargeImageKeyText";
             this.LargeImageKeyText.Size = new System.Drawing.Size(113, 23);
