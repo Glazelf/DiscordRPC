@@ -18,14 +18,22 @@ namespace DiscordRPC.WinForms
 
         private void Main_Load(object sender, EventArgs e)
         {
-            ClientIDNumeric.Value = Settings.Default.ClientID;
-            LargeImageKeyText.Text = Settings.Default.LargeImageAssetKey;
-            LargeImageTooltipText.Text = Settings.Default.LargeImageTooltip;
-            SmallImageKeyText.Text = Settings.Default.SmallImageAssetKey;
-            SmallImageTooltipText.Text = Settings.Default.SmallImageTooltip;
-            DetailsText.Text = Settings.Default.Details;
-            StateText.Text = Settings.Default.State;
-            t = new Thread(EventLoop);
+            try
+            {
+                ClientIDNumeric.Value = Settings.Default.ClientID;
+                LargeImageKeyText.Text = Settings.Default.LargeImageAssetKey;
+                LargeImageTooltipText.Text = Settings.Default.LargeImageTooltip;
+                SmallImageKeyText.Text = Settings.Default.SmallImageAssetKey;
+                SmallImageTooltipText.Text = Settings.Default.SmallImageTooltip;
+                DetailsText.Text = Settings.Default.Details;
+                StateText.Text = Settings.Default.State;
+
+                t = new Thread(EventLoop);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+            }
         }
 
         bool ConnectedBool = false;
@@ -37,18 +45,18 @@ namespace DiscordRPC.WinForms
                 try
                 {
                     discord = new Discord.Discord((long)ClientIDNumeric.Value, (ulong)Discord.CreateFlags.Default);
+                    activityManager = discord.GetActivityManager();
+                    discord.SetLogHook(Discord.LogLevel.Debug, LogProblemsFunction);
+                    if (t.IsAlive != true)
+                    {
+                        t.Start();
+                    }
+                    SetActivity();
                 }
                 catch (Exception ex)
                 {
                     LogError(ex);
                 }
-                activityManager = discord.GetActivityManager();
-                discord.SetLogHook(Discord.LogLevel.Debug, LogProblemsFunction);
-                if (t.IsAlive != true)
-                {
-                    t.Start();
-                }
-                SetActivity();
             }
             else
             {
@@ -65,27 +73,33 @@ namespace DiscordRPC.WinForms
                             LogText.Text += Environment.NewLine + "Failed to clear activity.";
                         }
                     });
+                    // Thread.Abort is not supported in .Net 5.0 anymore, should find a better way to do this
+                    // t.Abort();
+
+                    ChangeStateDisconnected();
+                    LogText.Text += Environment.NewLine + "Disconnected.";
                 }
                 catch (Exception ex)
                 {
                     LogError(ex);
                 }
-
-                // Thread.Abort is not supported in .Net 5.0 anymore, should find a better way to do this
-                // t.Abort();
-
-                ChangeStateDisconnected();
-                LogText.Text += Environment.NewLine + "Disconnected.";
             }
         }
 
         private void SyncButton_Click(object sender, EventArgs e)
         {
-            if (t.IsAlive != true)
+            try
             {
-                t.Start();
+                if (t.IsAlive != true)
+                {
+                    t.Start();
+                }
+                SetActivity();
             }
-            SetActivity();
+            catch (Exception ex)
+            {
+                LogError(ex);
+            }
         }
 
         public void LogProblemsFunction(Discord.LogLevel level, string message)
@@ -176,13 +190,20 @@ namespace DiscordRPC.WinForms
 
         public void EventLoop()
         {
-            while (true)
+            try
             {
-                MethodInvoker mi = delegate ()
+                while (true)
                 {
-                    discord.RunCallbacks();
-                };
-                Invoke(mi);
+                    MethodInvoker mi = delegate ()
+                    {
+                        discord.RunCallbacks();
+                    };
+                    Invoke(mi);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
             }
         }
 
