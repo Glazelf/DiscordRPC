@@ -201,5 +201,16 @@ namespace DiscordRPC.WinForms
         {
             LogText.Text += Environment.NewLine + $"Error: {ex.Message}\n{ex.StackTrace}";
         }
+
+        private void TaskBarCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(TaskBarCheckBox.Checked == true)
+            {
+                this.ShowInTaskbar = true;
+            } else
+            {
+                this.ShowInTaskbar = false;
+            }
+        }
     }
 }

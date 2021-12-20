@@ -51,6 +51,7 @@ namespace DiscordRPC.WinForms
             this.ConnectionGroup = new System.Windows.Forms.GroupBox();
             this.SyncButton = new System.Windows.Forms.Button();
             this.StatusGroup = new System.Windows.Forms.GroupBox();
+            this.TaskBarCheckBox = new System.Windows.Forms.CheckBox();
             this.StatusConnectionText = new System.Windows.Forms.Label();
             this.StatusConnectionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).BeginInit();
@@ -64,9 +65,10 @@ namespace DiscordRPC.WinForms
             // ConnectButton
             // 
             this.ConnectButton.AccessibleName = "ConnectButton";
-            this.ConnectButton.Location = new System.Drawing.Point(38, 51);
+            this.ConnectButton.Location = new System.Drawing.Point(43, 68);
+            this.ConnectButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(75, 23);
+            this.ConnectButton.Size = new System.Drawing.Size(86, 31);
             this.ConnectButton.TabIndex = 0;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
@@ -75,14 +77,15 @@ namespace DiscordRPC.WinForms
             // ClientIDNumeric
             // 
             this.ClientIDNumeric.AccessibleName = "ClientIDNumeric";
-            this.ClientIDNumeric.Location = new System.Drawing.Point(64, 22);
+            this.ClientIDNumeric.Location = new System.Drawing.Point(73, 29);
+            this.ClientIDNumeric.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ClientIDNumeric.Maximum = new decimal(new int[] {
             -1486618625,
             232830643,
             0,
             0});
             this.ClientIDNumeric.Name = "ClientIDNumeric";
-            this.ClientIDNumeric.Size = new System.Drawing.Size(130, 23);
+            this.ClientIDNumeric.Size = new System.Drawing.Size(149, 27);
             this.ClientIDNumeric.TabIndex = 2;
             this.ClientIDNumeric.ValueChanged += new System.EventHandler(this.ClientIDNumeric_ValueChanged);
             // 
@@ -90,9 +93,9 @@ namespace DiscordRPC.WinForms
             // 
             this.ClientIDLabel.AccessibleName = "ClientIDLabel";
             this.ClientIDLabel.AutoSize = true;
-            this.ClientIDLabel.Location = new System.Drawing.Point(6, 24);
+            this.ClientIDLabel.Location = new System.Drawing.Point(7, 32);
             this.ClientIDLabel.Name = "ClientIDLabel";
-            this.ClientIDLabel.Size = new System.Drawing.Size(55, 15);
+            this.ClientIDLabel.Size = new System.Drawing.Size(69, 20);
             this.ClientIDLabel.TabIndex = 3;
             this.ClientIDLabel.Text = "Client ID:";
             // 
@@ -102,9 +105,10 @@ namespace DiscordRPC.WinForms
             this.RPCTabControl.Controls.Add(this.RPCSettingsTab);
             this.RPCTabControl.Controls.Add(this.RPCLogTab);
             this.RPCTabControl.Location = new System.Drawing.Point(0, 0);
+            this.RPCTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RPCTabControl.Name = "RPCTabControl";
             this.RPCTabControl.SelectedIndex = 0;
-            this.RPCTabControl.Size = new System.Drawing.Size(528, 213);
+            this.RPCTabControl.Size = new System.Drawing.Size(633, 284);
             this.RPCTabControl.TabIndex = 4;
             // 
             // RPCSettingsTab
@@ -122,10 +126,11 @@ namespace DiscordRPC.WinForms
             this.RPCSettingsTab.Controls.Add(this.LargeImageTooltipLabel);
             this.RPCSettingsTab.Controls.Add(this.LargeImageKeyText);
             this.RPCSettingsTab.Controls.Add(this.LargeImageKeyLabel);
-            this.RPCSettingsTab.Location = new System.Drawing.Point(4, 24);
+            this.RPCSettingsTab.Location = new System.Drawing.Point(4, 29);
+            this.RPCSettingsTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RPCSettingsTab.Name = "RPCSettingsTab";
-            this.RPCSettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RPCSettingsTab.Size = new System.Drawing.Size(520, 185);
+            this.RPCSettingsTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RPCSettingsTab.Size = new System.Drawing.Size(625, 251);
             this.RPCSettingsTab.TabIndex = 1;
             this.RPCSettingsTab.Text = "Settings";
             this.RPCSettingsTab.UseVisualStyleBackColor = true;
@@ -133,9 +138,10 @@ namespace DiscordRPC.WinForms
             // DetailsText
             // 
             this.DetailsText.AccessibleName = "DetailsText";
-            this.DetailsText.Location = new System.Drawing.Point(59, 64);
+            this.DetailsText.Location = new System.Drawing.Point(73, 83);
+            this.DetailsText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DetailsText.Name = "DetailsText";
-            this.DetailsText.Size = new System.Drawing.Size(178, 23);
+            this.DetailsText.Size = new System.Drawing.Size(210, 27);
             this.DetailsText.TabIndex = 12;
             this.DetailsText.TextChanged += new System.EventHandler(this.DetailsText_TextChanged);
             // 
@@ -143,18 +149,19 @@ namespace DiscordRPC.WinForms
             // 
             this.DetailsLabel.AccessibleName = "DetailsLabel";
             this.DetailsLabel.AutoSize = true;
-            this.DetailsLabel.Location = new System.Drawing.Point(8, 67);
+            this.DetailsLabel.Location = new System.Drawing.Point(9, 86);
             this.DetailsLabel.Name = "DetailsLabel";
-            this.DetailsLabel.Size = new System.Drawing.Size(45, 15);
+            this.DetailsLabel.Size = new System.Drawing.Size(58, 20);
             this.DetailsLabel.TabIndex = 11;
             this.DetailsLabel.Text = "Details:";
             // 
             // StateText
             // 
             this.StateText.AccessibleName = "StateText";
-            this.StateText.Location = new System.Drawing.Point(285, 64);
+            this.StateText.Location = new System.Drawing.Point(341, 83);
+            this.StateText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StateText.Name = "StateText";
-            this.StateText.Size = new System.Drawing.Size(229, 23);
+            this.StateText.Size = new System.Drawing.Size(273, 27);
             this.StateText.TabIndex = 10;
             this.StateText.TextChanged += new System.EventHandler(this.StateText_TextChanged);
             // 
@@ -162,18 +169,19 @@ namespace DiscordRPC.WinForms
             // 
             this.StateLabel.AccessibleName = "StateLabel";
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(243, 67);
+            this.StateLabel.Location = new System.Drawing.Point(289, 89);
             this.StateLabel.Name = "StateLabel";
-            this.StateLabel.Size = new System.Drawing.Size(36, 15);
+            this.StateLabel.Size = new System.Drawing.Size(46, 20);
             this.StateLabel.TabIndex = 7;
             this.StateLabel.Text = "State:";
             // 
             // SmallImageTooltipText
             // 
             this.SmallImageTooltipText.AccessibleName = "SmallImageTooltipText";
-            this.SmallImageTooltipText.Location = new System.Drawing.Point(383, 35);
+            this.SmallImageTooltipText.Location = new System.Drawing.Point(465, 48);
+            this.SmallImageTooltipText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SmallImageTooltipText.Name = "SmallImageTooltipText";
-            this.SmallImageTooltipText.Size = new System.Drawing.Size(131, 23);
+            this.SmallImageTooltipText.Size = new System.Drawing.Size(149, 27);
             this.SmallImageTooltipText.TabIndex = 9;
             this.SmallImageTooltipText.TextChanged += new System.EventHandler(this.SmallImageTooltipText_TextChanged);
             // 
@@ -181,9 +189,9 @@ namespace DiscordRPC.WinForms
             // 
             this.SmallImageTooltipLabel.AccessibleName = "SmallImageTooltipLabel";
             this.SmallImageTooltipLabel.AutoSize = true;
-            this.SmallImageTooltipLabel.Location = new System.Drawing.Point(243, 38);
+            this.SmallImageTooltipLabel.Location = new System.Drawing.Point(289, 51);
             this.SmallImageTooltipLabel.Name = "SmallImageTooltipLabel";
-            this.SmallImageTooltipLabel.Size = new System.Drawing.Size(134, 15);
+            this.SmallImageTooltipLabel.Size = new System.Drawing.Size(170, 20);
             this.SmallImageTooltipLabel.TabIndex = 7;
             this.SmallImageTooltipLabel.Text = "Small Image Hover Text:";
             // 
@@ -191,9 +199,9 @@ namespace DiscordRPC.WinForms
             // 
             this.SmallImageKeyLabel.AccessibleName = "SmallImageKeyLabel";
             this.SmallImageKeyLabel.AutoSize = true;
-            this.SmallImageKeyLabel.Location = new System.Drawing.Point(8, 38);
+            this.SmallImageKeyLabel.Location = new System.Drawing.Point(9, 51);
             this.SmallImageKeyLabel.Name = "SmallImageKeyLabel";
-            this.SmallImageKeyLabel.Size = new System.Drawing.Size(110, 15);
+            this.SmallImageKeyLabel.Size = new System.Drawing.Size(139, 20);
             this.SmallImageKeyLabel.TabIndex = 8;
             this.SmallImageKeyLabel.Text = "Small Image Name:";
             // 
@@ -201,18 +209,20 @@ namespace DiscordRPC.WinForms
             // 
             this.SmallImageKeyText.AccessibleName = "SmallImageKeyText";
             this.SmallImageKeyText.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.SmallImageKeyText.Location = new System.Drawing.Point(124, 35);
+            this.SmallImageKeyText.Location = new System.Drawing.Point(154, 48);
+            this.SmallImageKeyText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SmallImageKeyText.Name = "SmallImageKeyText";
-            this.SmallImageKeyText.Size = new System.Drawing.Size(113, 23);
+            this.SmallImageKeyText.Size = new System.Drawing.Size(129, 27);
             this.SmallImageKeyText.TabIndex = 7;
             this.SmallImageKeyText.TextChanged += new System.EventHandler(this.SmallImageKeyText_TextChanged);
             // 
             // LargeImageTooltipText
             // 
             this.LargeImageTooltipText.AccessibleName = "LargeImageTooltipText";
-            this.LargeImageTooltipText.Location = new System.Drawing.Point(383, 6);
+            this.LargeImageTooltipText.Location = new System.Drawing.Point(465, 9);
+            this.LargeImageTooltipText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LargeImageTooltipText.Name = "LargeImageTooltipText";
-            this.LargeImageTooltipText.Size = new System.Drawing.Size(131, 23);
+            this.LargeImageTooltipText.Size = new System.Drawing.Size(149, 27);
             this.LargeImageTooltipText.TabIndex = 3;
             this.LargeImageTooltipText.TextChanged += new System.EventHandler(this.LargeImageTooltipText_TextChanged);
             // 
@@ -220,9 +230,9 @@ namespace DiscordRPC.WinForms
             // 
             this.LargeImageTooltipLabel.AccessibleName = "LargeImageTooltipLabel";
             this.LargeImageTooltipLabel.AutoSize = true;
-            this.LargeImageTooltipLabel.Location = new System.Drawing.Point(243, 9);
+            this.LargeImageTooltipLabel.Location = new System.Drawing.Point(289, 12);
             this.LargeImageTooltipLabel.Name = "LargeImageTooltipLabel";
-            this.LargeImageTooltipLabel.Size = new System.Drawing.Size(134, 15);
+            this.LargeImageTooltipLabel.Size = new System.Drawing.Size(170, 20);
             this.LargeImageTooltipLabel.TabIndex = 2;
             this.LargeImageTooltipLabel.Text = "Large Image Hover Text:";
             // 
@@ -230,9 +240,10 @@ namespace DiscordRPC.WinForms
             // 
             this.LargeImageKeyText.AccessibleName = "LargeImageKeyText";
             this.LargeImageKeyText.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.LargeImageKeyText.Location = new System.Drawing.Point(124, 6);
+            this.LargeImageKeyText.Location = new System.Drawing.Point(154, 9);
+            this.LargeImageKeyText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LargeImageKeyText.Name = "LargeImageKeyText";
-            this.LargeImageKeyText.Size = new System.Drawing.Size(113, 23);
+            this.LargeImageKeyText.Size = new System.Drawing.Size(129, 27);
             this.LargeImageKeyText.TabIndex = 1;
             this.LargeImageKeyText.TextChanged += new System.EventHandler(this.LargeImageKeyText_TextChanged);
             // 
@@ -240,9 +251,9 @@ namespace DiscordRPC.WinForms
             // 
             this.LargeImageKeyLabel.AccessibleName = "LargeImageKeyLabel";
             this.LargeImageKeyLabel.AutoSize = true;
-            this.LargeImageKeyLabel.Location = new System.Drawing.Point(8, 9);
+            this.LargeImageKeyLabel.Location = new System.Drawing.Point(9, 12);
             this.LargeImageKeyLabel.Name = "LargeImageKeyLabel";
-            this.LargeImageKeyLabel.Size = new System.Drawing.Size(110, 15);
+            this.LargeImageKeyLabel.Size = new System.Drawing.Size(139, 20);
             this.LargeImageKeyLabel.TabIndex = 0;
             this.LargeImageKeyLabel.Text = "Large Image Name:";
             // 
@@ -250,10 +261,11 @@ namespace DiscordRPC.WinForms
             // 
             this.RPCLogTab.AccessibleName = "RPCLogTab";
             this.RPCLogTab.Controls.Add(this.LogText);
-            this.RPCLogTab.Location = new System.Drawing.Point(4, 24);
+            this.RPCLogTab.Location = new System.Drawing.Point(4, 29);
+            this.RPCLogTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RPCLogTab.Name = "RPCLogTab";
-            this.RPCLogTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RPCLogTab.Size = new System.Drawing.Size(520, 185);
+            this.RPCLogTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RPCLogTab.Size = new System.Drawing.Size(625, 251);
             this.RPCLogTab.TabIndex = 2;
             this.RPCLogTab.Text = "Log";
             this.RPCLogTab.UseVisualStyleBackColor = true;
@@ -262,8 +274,9 @@ namespace DiscordRPC.WinForms
             // 
             this.LogText.AccessibleName = "LogText";
             this.LogText.Location = new System.Drawing.Point(0, 0);
+            this.LogText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LogText.Name = "LogText";
-            this.LogText.Size = new System.Drawing.Size(524, 182);
+            this.LogText.Size = new System.Drawing.Size(598, 241);
             this.LogText.TabIndex = 0;
             this.LogText.Text = "Booted application.";
             // 
@@ -274,9 +287,11 @@ namespace DiscordRPC.WinForms
             this.ConnectionGroup.Controls.Add(this.ClientIDNumeric);
             this.ConnectionGroup.Controls.Add(this.ConnectButton);
             this.ConnectionGroup.Controls.Add(this.ClientIDLabel);
-            this.ConnectionGroup.Location = new System.Drawing.Point(324, 219);
+            this.ConnectionGroup.Location = new System.Drawing.Point(400, 292);
+            this.ConnectionGroup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConnectionGroup.Name = "ConnectionGroup";
-            this.ConnectionGroup.Size = new System.Drawing.Size(200, 81);
+            this.ConnectionGroup.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ConnectionGroup.Size = new System.Drawing.Size(229, 108);
             this.ConnectionGroup.TabIndex = 5;
             this.ConnectionGroup.TabStop = false;
             this.ConnectionGroup.Text = "Connection";
@@ -285,9 +300,10 @@ namespace DiscordRPC.WinForms
             // 
             this.SyncButton.AccessibleName = "SyncButton";
             this.SyncButton.Enabled = false;
-            this.SyncButton.Location = new System.Drawing.Point(119, 51);
+            this.SyncButton.Location = new System.Drawing.Point(136, 68);
+            this.SyncButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SyncButton.Name = "SyncButton";
-            this.SyncButton.Size = new System.Drawing.Size(75, 23);
+            this.SyncButton.Size = new System.Drawing.Size(86, 31);
             this.SyncButton.TabIndex = 4;
             this.SyncButton.Text = "Sync";
             this.SyncButton.UseVisualStyleBackColor = true;
@@ -296,23 +312,38 @@ namespace DiscordRPC.WinForms
             // StatusGroup
             // 
             this.StatusGroup.AccessibleName = "StatusGroup";
+            this.StatusGroup.Controls.Add(this.TaskBarCheckBox);
             this.StatusGroup.Controls.Add(this.StatusConnectionText);
             this.StatusGroup.Controls.Add(this.StatusConnectionLabel);
-            this.StatusGroup.Location = new System.Drawing.Point(4, 219);
+            this.StatusGroup.Location = new System.Drawing.Point(5, 292);
+            this.StatusGroup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StatusGroup.Name = "StatusGroup";
-            this.StatusGroup.Size = new System.Drawing.Size(314, 81);
+            this.StatusGroup.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.StatusGroup.Size = new System.Drawing.Size(389, 108);
             this.StatusGroup.TabIndex = 6;
             this.StatusGroup.TabStop = false;
             this.StatusGroup.Text = "Status";
+            // 
+            // TaskBarCheckBox
+            // 
+            this.TaskBarCheckBox.AccessibleName = "TaskBarCheckBox";
+            this.TaskBarCheckBox.AutoSize = true;
+            this.TaskBarCheckBox.Location = new System.Drawing.Point(243, 21);
+            this.TaskBarCheckBox.Name = "TaskBarCheckBox";
+            this.TaskBarCheckBox.Size = new System.Drawing.Size(140, 24);
+            this.TaskBarCheckBox.TabIndex = 13;
+            this.TaskBarCheckBox.Text = "Show on taskbar";
+            this.TaskBarCheckBox.UseVisualStyleBackColor = true;
+            this.TaskBarCheckBox.CheckedChanged += new System.EventHandler(this.TaskBarCheckBox_CheckedChanged);
             // 
             // StatusConnectionText
             // 
             this.StatusConnectionText.AccessibleName = "StatusConnectionText";
             this.StatusConnectionText.AutoSize = true;
             this.StatusConnectionText.ForeColor = System.Drawing.Color.Red;
-            this.StatusConnectionText.Location = new System.Drawing.Point(86, 19);
+            this.StatusConnectionText.Location = new System.Drawing.Point(98, 25);
             this.StatusConnectionText.Name = "StatusConnectionText";
-            this.StatusConnectionText.Size = new System.Drawing.Size(79, 15);
+            this.StatusConnectionText.Size = new System.Drawing.Size(99, 20);
             this.StatusConnectionText.TabIndex = 8;
             this.StatusConnectionText.Text = "Disconnected";
             // 
@@ -320,23 +351,23 @@ namespace DiscordRPC.WinForms
             // 
             this.StatusConnectionLabel.AccessibleName = "StatusConnectionLabel";
             this.StatusConnectionLabel.AutoSize = true;
-            this.StatusConnectionLabel.Location = new System.Drawing.Point(8, 19);
+            this.StatusConnectionLabel.Location = new System.Drawing.Point(9, 25);
             this.StatusConnectionLabel.Name = "StatusConnectionLabel";
-            this.StatusConnectionLabel.Size = new System.Drawing.Size(72, 15);
+            this.StatusConnectionLabel.Size = new System.Drawing.Size(87, 20);
             this.StatusConnectionLabel.TabIndex = 7;
             this.StatusConnectionLabel.Text = "Connection:";
             // 
             // Main
             // 
             this.AccessibleName = "Main";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 307);
+            this.ClientSize = new System.Drawing.Size(631, 409);
             this.Controls.Add(this.StatusGroup);
             this.Controls.Add(this.ConnectionGroup);
             this.Controls.Add(this.RPCTabControl);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Main";
-            this.ShowInTaskbar = false;
             this.Text = "DiscordRPC";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClientIDNumeric)).EndInit();
@@ -378,6 +409,7 @@ namespace DiscordRPC.WinForms
         private System.Windows.Forms.Label DetailsLabel;
         private System.Windows.Forms.TextBox StateText;
         private System.Windows.Forms.Label StateLabel;
+        private System.Windows.Forms.CheckBox TaskBarCheckBox;
     }
 }
 
