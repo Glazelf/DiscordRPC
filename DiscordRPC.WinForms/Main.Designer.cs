@@ -328,6 +328,8 @@ namespace DiscordRPC.WinForms
             // 
             this.TaskBarCheckBox.AccessibleName = "TaskBarCheckBox";
             this.TaskBarCheckBox.AutoSize = true;
+            this.TaskBarCheckBox.Checked = true;
+            this.TaskBarCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.TaskBarCheckBox.Location = new System.Drawing.Point(243, 21);
             this.TaskBarCheckBox.Name = "TaskBarCheckBox";
             this.TaskBarCheckBox.Size = new System.Drawing.Size(140, 24);
