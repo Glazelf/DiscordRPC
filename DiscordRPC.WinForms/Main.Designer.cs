@@ -77,7 +77,7 @@ namespace DiscordRPC.WinForms
             // ClientIDNumeric
             // 
             this.ClientIDNumeric.AccessibleName = "ClientIDNumeric";
-            this.ClientIDNumeric.Location = new System.Drawing.Point(73, 29);
+            this.ClientIDNumeric.Location = new System.Drawing.Point(82, 28);
             this.ClientIDNumeric.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ClientIDNumeric.Maximum = new decimal(new int[] {
             -1486618625,
@@ -85,7 +85,7 @@ namespace DiscordRPC.WinForms
             0,
             0});
             this.ClientIDNumeric.Name = "ClientIDNumeric";
-            this.ClientIDNumeric.Size = new System.Drawing.Size(149, 27);
+            this.ClientIDNumeric.Size = new System.Drawing.Size(182, 27);
             this.ClientIDNumeric.TabIndex = 2;
             this.ClientIDNumeric.ValueChanged += new System.EventHandler(this.ClientIDNumeric_ValueChanged);
             // 
@@ -93,7 +93,7 @@ namespace DiscordRPC.WinForms
             // 
             this.ClientIDLabel.AccessibleName = "ClientIDLabel";
             this.ClientIDLabel.AutoSize = true;
-            this.ClientIDLabel.Location = new System.Drawing.Point(7, 32);
+            this.ClientIDLabel.Location = new System.Drawing.Point(7, 30);
             this.ClientIDLabel.Name = "ClientIDLabel";
             this.ClientIDLabel.Size = new System.Drawing.Size(69, 20);
             this.ClientIDLabel.TabIndex = 3;
@@ -287,11 +287,11 @@ namespace DiscordRPC.WinForms
             this.ConnectionGroup.Controls.Add(this.ClientIDNumeric);
             this.ConnectionGroup.Controls.Add(this.ConnectButton);
             this.ConnectionGroup.Controls.Add(this.ClientIDLabel);
-            this.ConnectionGroup.Location = new System.Drawing.Point(400, 292);
+            this.ConnectionGroup.Location = new System.Drawing.Point(354, 292);
             this.ConnectionGroup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConnectionGroup.Name = "ConnectionGroup";
             this.ConnectionGroup.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ConnectionGroup.Size = new System.Drawing.Size(229, 108);
+            this.ConnectionGroup.Size = new System.Drawing.Size(275, 108);
             this.ConnectionGroup.TabIndex = 5;
             this.ConnectionGroup.TabStop = false;
             this.ConnectionGroup.Text = "Connection";
@@ -319,7 +319,7 @@ namespace DiscordRPC.WinForms
             this.StatusGroup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StatusGroup.Name = "StatusGroup";
             this.StatusGroup.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.StatusGroup.Size = new System.Drawing.Size(389, 108);
+            this.StatusGroup.Size = new System.Drawing.Size(343, 108);
             this.StatusGroup.TabIndex = 6;
             this.StatusGroup.TabStop = false;
             this.StatusGroup.Text = "Status";
@@ -330,7 +330,7 @@ namespace DiscordRPC.WinForms
             this.TaskBarCheckBox.AutoSize = true;
             this.TaskBarCheckBox.Checked = true;
             this.TaskBarCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.TaskBarCheckBox.Location = new System.Drawing.Point(243, 21);
+            this.TaskBarCheckBox.Location = new System.Drawing.Point(203, 24);
             this.TaskBarCheckBox.Name = "TaskBarCheckBox";
             this.TaskBarCheckBox.Size = new System.Drawing.Size(140, 24);
             this.TaskBarCheckBox.TabIndex = 13;
