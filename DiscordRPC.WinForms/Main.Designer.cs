@@ -29,6 +29,7 @@ namespace DiscordRPC.WinForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = Properties.Resources.icon;
             this.ConnectButton = new System.Windows.Forms.Button();
             this.ClientIDNumeric = new System.Windows.Forms.NumericUpDown();
             this.ClientIDLabel = new System.Windows.Forms.Label();
